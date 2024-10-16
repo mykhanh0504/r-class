@@ -33,7 +33,8 @@ cod_pop_over_time <- data.frame("Years" = years,
                                 "Cod Population"= cod_pop)
 
 ggplot(data = cod_pop_over_time, aes(x= Years, y= Cod.Population))+
-  geom_point()
+  geom_point()+
+  ggtitle(label = "Cod Population Over Time")
 ```
 
 This population of cod is going extinct over time, reaching nearly zero by 1994. 
@@ -58,7 +59,7 @@ for (i in t) {
   N[i+1] <-  N[i] + r*N[i]
 }
 
-plot(N)
+plot(N, main = "Exponential Growth")
 ```
 
 ## 2-3. Population models
@@ -76,19 +77,113 @@ K<- 1
 N <- vector(length = length(t))
 N[1] <- 0.1 
 
-#Step 3: run the for loop
-for (i in t) {
-  N[i+1] <-  N[i] + r*N[i]*((1-N[i])/K)
-}
 
-plot(N)
+#Step 3: run the for loop
+  for(i in t) {
+  N[i+1] <-  N[i] + r*N[i]*((1-N[i])/K)
+  }
+
+plot(N, main= "r=0.4")
+
+
+#Initial loop with the default parameters. 
+#Step 1: Define parameters
+r <- 0.5
+t <- c(1:50)
+K<- 1
+
+#Step 2: make a vector to store population change
+N <- vector(length = length(t))
+N[1] <- 0.1 
+
+
+#Step 3: run the for loop
+  for(i in t) {
+  N[i+1] <-  N[i] + r*N[i]*((1-N[i])/K)
+  }
+
+plot(N, main= "r=0.5")
+
+#Initial loop with the default parameters. 
+#Step 1: Define parameters
+r <- 0.6
+t <- c(1:50)
+K<- 1
+
+#Step 2: make a vector to store population change
+N <- vector(length = length(t))
+N[1] <- 0.1 
+
+
+#Step 3: run the for loop
+  for(i in t) {
+  N[i+1] <-  N[i] + r*N[i]*((1-N[i])/K)
+  }
+
+plot(N, main= "r=0.6")
+
+#Initial loop with the default parameters. 
+#Step 1: Define parameters
+r <- 0.7
+t <- c(1:50)
+K<- 1
+
+#Step 2: make a vector to store population change
+N <- vector(length = length(t))
+N[1] <- 0.1 
+
+
+#Step 3: run the for loop
+  for(i in t) {
+  N[i+1] <-  N[i] + r*N[i]*((1-N[i])/K)
+  }
+
+plot(N, main= "r=0.7")
+
+#Initial loop with the default parameters. 
+#Step 1: Define parameters
+r <- 0.8
+t <- c(1:50)
+K<- 1
+
+#Step 2: make a vector to store population change
+N <- vector(length = length(t))
+N[1] <- 0.1 
+
+
+#Step 3: run the for loop
+  for(i in t) {
+  N[i+1] <-  N[i] + r*N[i]*((1-N[i])/K)
+  }
+
+plot(N, main= "r=0.8")
+
+#Initial loop with the default parameters. 
+#Step 1: Define parameters
+r <- 0.9
+t <- c(1:50)
+K<- 1
+
+#Step 2: make a vector to store population change
+N <- vector(length = length(t))
+N[1] <- 0.1 
+
+
+#Step 3: run the for loop
+  for(i in t) {
+  N[i+1] <-  N[i] + r*N[i]*((1-N[i])/K)
+  }
+
+plot(N, main= "r=0.9")
 ```
+With the default parameters N reaches K at ~20 generations. As the growth rate (r) increases N is able to reach K at a faster rate, and takes less generations to do so. This makes sense as with a faster growth rate you would expect a population to grow faster, and therefore reach it's capacity in less time. 
+
 Given the graph above it appears that the population does not go extinct nor are there cycles. After about 20 
 
 ```{r}
-#Now increasing r and addressing the second half of that question
+#Lowering the growth rate to r = 0.1 so it takes longer than 20
 #Step 1: Define parameters
-#r <- 0.4
+r <- 0.05
 t <- c(1:50)
 K<- 1
 
@@ -103,7 +198,7 @@ for (i in t) {
   N[i+1] <-  N[i] + r*N[i]*((1-N[i])/K)
 }
 
-plot(N)
+plot(N, main = "r=0.05")
 
 ```
 
@@ -206,9 +301,11 @@ plot(1:max.time,p,ylim=c(0,1),type='l',las=1,ylab='Freq(A)',xlab='Time')
 
 # 1. What is the effect of population size (N) on the probability of extinction of A allele?
 
-The fixed population size (N=1000) ensures that the A allele extinction probability remain really low (?).
+The fixed population size (N=1000) ensures that the A allele extinction probability remain really low. However if we had a smaller population size the probability of extinction of any allele would increase substantially. In summary: the smaller the population, the higher probability of genetic drift and therefore allele fixation. 
 
 <!--# Khanh: it's my understanding that it's really hard for this population to not have any A allele (probability =1/1000?). I don't know anything about genetics so please fix language as well. -->
+
+<!--# Olivia: My understanding of Genetic Drift generally speaking is that the lower the population is the higher chance of allele fixation. Essentially the smaller the population the faster that entire population will have that allele (especially if it's the dominant A instead of the recessive a allele), so I added that second sentence to our answer. Think of like a small group of ~20 people migrates to an island how many generations it would take before the dominant allele took over completely versus if it was a giant group of 20,000 people. -->
 
 # 2. How does the initial frequency of the A allele affect the probability it will reach fixation?
 
